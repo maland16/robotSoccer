@@ -1,34 +1,31 @@
 import java.util.*;
 
 public class Game{
-    static int fieldSize = 10;
+    static int fieldSize = 5;
     static String field[][] = new String[fieldSize][fieldSize];
     static Robot rob = new Robot();
     static Ball ball = new Ball();
     
     public static void main(String[]args){
-        System.out.println("HI");
         ball.pos.x = 0;
         ball.pos.y = 0;
         rob.pos.x = 1;
         rob.pos.y = 1;
         String move;
+        int hFar;
         boolean on = true;
         while(on = true){
             printBoard();
-            Scanner kbReader = new Scanner(System.in);
+            for(int i=0;i>50;i++){System.out.println(" ");}
+            Scanner moveScan = new Scanner(System.in);
             System.out.print("Move: ");
-            move = kbReader.next();
-            if(move.equals("w")){
-                rob.moveUp();//move up
-            }else if(move.equals("s")){
-                rob.moveDown();//move down
-            }else if(move.equals("a")){
-                rob.moveLeft();//move right
-            }else if(move.equals("d")){
-                rob.moveRight();//move left
-            }else if(move.equals("q")){
-                on = false;
+            move = moveScan.next();
+            Scanner farScan = new Scanner(System.in);
+            System.out.print("Distance (int): ");
+            hFar = Integer.parseInt(farScan.next());
+            rob.move(hFar,move);
+            if(move.equals("q")){
+                break;
             }//quit
         }
     }
